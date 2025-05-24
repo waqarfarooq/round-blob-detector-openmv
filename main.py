@@ -34,11 +34,11 @@ while True:
         pixels_threshold=200,
         area_threshold=200,
     ):
-        if blob.elongation() == 0:
+        if blob.elongation() < 0.3:
             img.draw_edges(blob.min_corners(), color=(255, 0, 0))
-        img.draw_rectangle(blob.rect())
-        img.draw_cross(blob.cx(), blob.cy())
-        img.draw_keypoints(
+            img.draw_rectangle(blob.rect())
+            img.draw_cross(blob.cx(), blob.cy())
+            img.draw_keypoints(
             [(blob.cx(), blob.cy(), int(math.degrees(blob.rotation())))], size=20
         )
 
